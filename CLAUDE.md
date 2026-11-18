@@ -2,6 +2,9 @@
 
 Static frontend (`index.html`, `app.js`, built `styles.css`) + Supabase (Postgres, Auth, Edge Functions). Read `docs/PRODUCT_BRIEF.md` (what and why), `docs/PLAN.md` (milestones M0 to M7, open decisions), `README.md` and `docs/SECURITY.md` first.
 
+## Architecture decision (2026-11-18)
+The app runs **locally on the user's computer**; only the data is hosted (Supabase). The assistant will use Sign in with ChatGPT via a local helper on `127.0.0.1` (plan M8). Do not add hosting config or a server-side LLM key.
+
 ## Supabase project
 - Dashboard: https://supabase.com/dashboard/project/xsepfjyoiqzkhdnpjckh
 - Project ref: `xsepfjyoiqzkhdnpjckh`; API URL: `https://xsepfjyoiqzkhdnpjckh.supabase.co`

@@ -58,11 +58,18 @@ Done when: the owner has approved the list for all five tracks.
 2. Czech (`locales/cs.json`) follows after the first release.
 
 ### M7. First-user release (Owner decisions, Agent executes)
-1. Choose hosting and domain; set `ALLOWED_ORIGIN` and the CSP to match.
+1. Package the local app (open decision 2) with a one-step start; set `ALLOWED_ORIGIN` and the CSP to the local origin; retire `deploy/nginx.conf.example`.
 2. Fill the privacy notice and `.well-known/security.txt` placeholders.
 3. Close the Gap Review in `docs/SECURITY.md` section 7.
 
-Done when: the first user completes the full flow on the hosted URL (the brief's success measure).
+Done when: the first user installs and starts the app on their own computer and completes the full flow (the brief's success measure).
+
+### M8. Assistant on the user's ChatGPT plan (Agent; Owner tests with own login). Can follow M1.
+1. Local helper process (Node) serves the app on `127.0.0.1` and handles Sign in with ChatGPT: dynamic client registration, PKCE, loopback callback, token storage on the device, Responses API calls with `store: false`.
+2. Assistant sits behind a provider interface so other providers can be added.
+3. Retrieval over the local curriculum index (shared with search, M4) so answers cite curated resources; keep the link allowlist.
+4. Retire the `assistant_router` Edge Function, the `LLM_API_KEY` secret and the `assistant_usage` table once the local path works (the user's own plan and its cap replace our rate limit).
+5. Add a licence file if the open-source route is relied on.
 
 ## Later (not scheduled)
 Quizzes and testing; own coursework and labs; organisations, roles and reporting; assistant rebuild.
@@ -73,8 +80,8 @@ M1 can start now. M0 blocks only the cloud half of M1's tests. M5 follows M1 and
 ## Open decisions (Owner)
 | # | Decision | Default if unanswered |
 |---|---|---|
-| 1 | AI assistant: target is Sign in with ChatGPT plan usage, which needs OpenAI approval for a hosted app. Fallback until approved: owner's API key, user-supplied API key, or assistant hidden | Hidden; build behind a provider interface so the sign-in can be added without rework |
-| 2 | Hosting for the first tester | None; blocks M7 |
+| 1 | Resolved 2026-11-18: assistant uses Sign in with ChatGPT through a local helper (M8); no approval needed while the app is local | n/a |
+| 2 | Packaging of the local app: `npm start` with Node installed, or a desktop installer | `npm start` for testing; installer later |
 | 3 | Does password sign-in replace anonymous sessions, and is email confirmation off during testing | Replace; off |
 | 4 | Controller name and contact for the privacy notice | None; blocks M7 |
 
