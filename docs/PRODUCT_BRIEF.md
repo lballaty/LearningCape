@@ -18,7 +18,7 @@ A standalone web app that guides a person through curated AI learning for their 
 | Sign-in | Email and password only at first. No MFA during the testing period, because it gets in the way of feature testing. |
 
 ## 3. Assumptions (not yet confirmed)
-1. **AI assistant:** kept as built for now (recommends only curated links), and hidden when no LLM key is configured. Rebuild or removal is undecided.
+1. **AI assistant (owner intent, 2026-11-18):** designed for Sign in with ChatGPT, so each user's own ChatGPT plan pays for their questions; initial testing uses the owner's login. Constraint found in OpenAI's docs (developers.openai.com/siwc, checked 2026-11-18): plan usage is self-serve only for open-source and locally hosted apps; a remotely hosted app must be accepted through OpenAI's interest form (limited trial). Until accepted, the assistant needs a fallback (see `docs/PLAN.md`, open decision 1).
 2. **Accounts:** email and password sign-in replaces anonymous sessions as the way into the cloud features; the app still works on one device without signing in. Email confirmation is switched off during testing. Both points need owner confirmation.
 3. **Curriculum storage:** stays a reviewed JSON file in the repo until own coursework exists.
 4. **Vendor neutrality:** content should cover several AI vendors, not mostly one.

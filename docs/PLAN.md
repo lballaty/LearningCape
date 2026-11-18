@@ -72,7 +72,7 @@ M1 can start now. M0 blocks only the cloud half of M1's tests. M5 follows M1 and
 ## Open decisions (Owner)
 | # | Decision | Default if unanswered |
 |---|---|---|
-| 1 | AI assistant: keep as is, rebuild, or remove | Keep, hidden without a key |
+| 1 | AI assistant: target is Sign in with ChatGPT plan usage, which needs OpenAI approval for a hosted app. Fallback until approved: owner's API key, user-supplied API key, or assistant hidden | Hidden; build behind a provider interface so the sign-in can be added without rework |
 | 2 | Hosting for the first tester | None; blocks M7 |
 | 3 | Does password sign-in replace anonymous sessions, and is email confirmation off during testing | Replace; off |
 | 4 | Controller name and contact for the privacy notice | None; blocks M7 |
