@@ -1,6 +1,6 @@
 # LearningCape: notes for agents
 
-Static frontend (`index.html`, `app.js`, built `styles.css`) + Supabase (Postgres, Auth, Edge Functions). Read `README.md` and `docs/SECURITY.md` first.
+Static frontend (`index.html`, `app.js`, built `styles.css`) + Supabase (Postgres, Auth, Edge Functions). Read `docs/PRODUCT_BRIEF.md` (what and why), `docs/PLAN.md` (milestones M0 to M7, open decisions), `README.md` and `docs/SECURITY.md` first.
 
 ## Supabase project
 - Dashboard: https://supabase.com/dashboard/project/xsepfjyoiqzkhdnpjckh
