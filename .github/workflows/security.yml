@@ -1,0 +1,30 @@
+name: security
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  secrets-and-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4   # TODO: pin actions to full commit SHAs
+        with: { fetch-depth: 0 }
+      - name: Secret scan (gitleaks)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+      - run: npm audit --audit-level=high
+      - name: CSS build is up to date
+        run: |
+          npm run build:css
+          git diff --exit-code styles.css
+      - name: Curriculum copies are identical
+        run: diff curriculum.json supabase/functions/assistant_router/curriculum.json
+      - name: No unsafe DOM sinks or inline handlers
+        run: "! grep -nE 'innerHTML|outerHTML|insertAdjacentHTML|document\\.write|eval\\(|new Function|onclick=|onchange=' app.js index.html"
+      - name: No service-role or LLM key references in client files
+        run: "! grep -nEi 'service_role|LLM_API_KEY|OPENAI_API_KEY|sk-[A-Za-z0-9]{20,}' app.js index.html config.js"

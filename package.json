@@ -1,0 +1,12 @@
+{
+  "name": "learningcape",
+  "private": true,
+  "description": "Multi-tier AI competency and governance tracker",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i src/input.css -o styles.css --minify",
+    "sync:curriculum": "cp curriculum.json supabase/functions/assistant_router/curriculum.json"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

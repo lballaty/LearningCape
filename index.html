@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950 text-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Defence in depth. The authoritative CSP is sent as an HTTP header (see deploy/nginx.conf.example),
+       which also adds frame-ancestors. If you self-host Supabase, change connect-src accordingly. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://*.supabase.co; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; manifest-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>LearningCape | Multi-Model AI Competency &amp; Governance Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="h-full flex flex-col selection:bg-cyan-500 selection:text-slate-950">
+
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-40 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <div class="h-3 w-3 rounded-full bg-cyan-400 animate-pulse"></div>
+      <span class="font-bold text-lg tracking-tight bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">LearningCape</span>
+      <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700 font-mono">v1.7-secure</span>
+    </div>
+    <div class="flex items-center space-x-4">
+      <span id="active-track-badge" class="hidden px-3 py-1 rounded-full text-xs font-medium bg-cyan-950 text-cyan-300 border border-cyan-800 font-mono"></span>
+      <button type="button" data-action="reset-track" id="change-track-btn" class="hidden text-xs text-slate-400 hover:text-cyan-400 underline transition-colors">Switch Level</button>
+      <button type="button" data-action="open-privacy" class="text-xs text-slate-400 hover:text-cyan-400 underline transition-colors">Privacy &amp; Data</button>
+      <button type="button" data-action="open-chat" class="px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-xs font-semibold transition-colors">💬 Ask LearningCape AI</button>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-7xl w-full mx-auto p-6 lg:p-10 flex flex-col">
+
+    <div id="view-intro" class="my-auto py-12 text-center max-w-3xl mx-auto">
+      <div class="inline-block p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 mb-6 font-mono text-xs tracking-wider uppercase">Open Competency &amp; Governance Framework</div>
+      <h1 class="text-4xl lg:text-6xl font-extrabold tracking-tight mb-6 text-white leading-tight">Master AI Skills &amp; Organize Your Vault.</h1>
+      <p class="text-slate-300 text-lg mb-10 leading-relaxed">Welcome to <strong class="text-cyan-400">LearningCape</strong>. Track curated curricula matched to your exact level, organize custom coursework in your personal vault, and use the AI assistant for guidance grounded in the curated list.</p>
+      <button type="button" data-action="goto-selector" class="px-8 py-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-base transition-all shadow-lg shadow-cyan-500/20">Get Started &rarr; Select Your Level</button>
+    </div>
+
+    <div id="view-selector" class="hidden my-auto py-12">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-white">Select Your Current Level</h1>
+        <p class="text-slate-400 text-lg">No prior technical background assumed. Choose the track that matches your role.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <button type="button" data-action="select-track" data-track="everyday" class="group text-left bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-xl p-6 transition-all flex flex-col justify-between">
+          <div><span class="text-xs font-mono uppercase tracking-wider text-cyan-400">Tier 1 • Beginner / Home</span>
+          <h3 class="text-xl font-bold mt-2 text-white group-hover:text-cyan-300">Everyday Home User</h3>
+          <p class="text-slate-400 text-sm mt-3">Simple prompts, personal task assistants, and safe consumer privacy guidelines.</p></div>
+          <div class="mt-6 text-xs font-semibold text-cyan-400">Start This Path &rarr;</div>
+        </button>
+        <button type="button" data-action="select-track" data-track="student" class="group text-left bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-xl p-6 transition-all flex flex-col justify-between">
+          <div><span class="text-xs font-mono uppercase tracking-wider text-teal-400">Tier 2 • Academia</span>
+          <h3 class="text-xl font-bold mt-2 text-white group-hover:text-teal-300">Student &amp; Researcher</h3>
+          <p class="text-slate-400 text-sm mt-3">Source-grounded study helpers, citation verification, and academic workflows.</p></div>
+          <div class="mt-6 text-xs font-semibold text-teal-400">Start This Path &rarr;</div>
+        </button>
+        <button type="button" data-action="select-track" data-track="office" class="group text-left bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-xl p-6 transition-all flex flex-col justify-between">
+          <div><span class="text-xs font-mono uppercase tracking-wider text-indigo-400">Tier 3 • Business Productivity</span>
+          <h3 class="text-xl font-bold mt-2 text-white group-hover:text-indigo-300">General Office Professional</h3>
+          <p class="text-slate-400 text-sm mt-3">Email triage, meeting synthesis, spreadsheet cleanup, and workplace automation.</p></div>
+          <div class="mt-6 text-xs font-semibold text-indigo-400">Start This Path &rarr;</div>
+        </button>
+        <button type="button" data-action="select-track" data-track="engineer" class="group text-left bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-xl p-6 transition-all flex flex-col justify-between">
+          <div><span class="text-xs font-mono uppercase tracking-wider text-amber-400">Tier 4 • Technical Builder</span>
+          <h3 class="text-xl font-bold mt-2 text-white group-hover:text-amber-300">AI Software Engineer</h3>
+          <p class="text-slate-400 text-sm mt-3">Multi-model API integration, vector database RAG pipelines, and agentic loop patterns.</p></div>
+          <div class="mt-6 text-xs font-semibold text-amber-400">Start This Path &rarr;</div>
+        </button>
+        <button type="button" data-action="select-track" data-track="executive" class="group text-left bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-xl p-6 transition-all flex flex-col justify-between">
+          <div><span class="text-xs font-mono uppercase tracking-wider text-rose-400">Tier 5 • Executive &amp; Governance</span>
+          <h3 class="text-xl font-bold mt-2 text-white group-hover:text-rose-300">AI CTO, CISO &amp; Consultant</h3>
+          <p class="text-slate-400 text-sm mt-3">Enterprise inference economics, zero-trust control planes, and compliance (ISO 42001, EU AI Act).</p></div>
+          <div class="mt-6 text-xs font-semibold text-rose-400">Start This Path &rarr;</div>
+        </button>
+      </div>
+    </div>
+
+    <div id="view-dashboard" class="hidden flex-1 flex flex-col space-y-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800 pb-6 gap-4">
+        <div>
+          <h1 id="dashboard-title" class="text-3xl font-extrabold text-white">Track Dashboard</h1>
+          <p id="dashboard-subtitle" class="text-slate-400 text-sm mt-1"></p>
+        </div>
+        <div class="flex items-center space-x-4 bg-slate-900 border border-slate-800 p-4 rounded-xl">
+          <div class="text-right">
+            <div class="text-xs text-slate-400 font-mono">CURRICULUM PROGRESS</div>
+            <div id="progress-text" class="text-lg font-bold text-cyan-400 font-mono">0%</div>
+          </div>
+          <div class="w-24 bg-slate-800 h-3 rounded-full overflow-hidden"><div id="progress-bar" class="bg-cyan-400 h-full transition-all duration-300"></div></div>
+        </div>
+      </div>
+
+      <div class="flex space-x-2 border-b border-slate-800 pb-2">
+        <button type="button" data-action="tab" data-tab="curriculum" id="tab-curriculum-btn" class="px-4 py-2 rounded-lg text-sm font-semibold bg-cyan-500 text-slate-950 transition-colors">Curated Modules</button>
+        <button type="button" data-action="tab" data-tab="vault" id="tab-vault-btn" class="px-4 py-2 rounded-lg text-sm font-semibold bg-slate-900 text-slate-400 hover:text-white transition-colors">My Custom Vault (+)</button>
+      </div>
+
+      <div id="tab-curriculum" class="grid grid-cols-1 lg:grid-cols-3 gap-6"></div>
+
+      <div id="tab-vault" class="hidden flex flex-col space-y-6">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+          <h3 class="text-lg font-bold text-white mb-2">Add Coursework or Resource to Vault</h3>
+          <p class="text-slate-400 text-sm mb-4">Track external YouTube playlists, GitHub repositories, or paid courses. Only http(s) links are accepted. Do not enter personal or confidential data.</p>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <input type="text" id="vault-title" maxlength="200" placeholder="Resource Title" aria-label="Resource title" class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-2 text-sm text-slate-200">
+            <select id="vault-platform" aria-label="Platform" class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-2 text-sm text-slate-200">
+              <option value="GitHub">GitHub</option><option value="YouTube">YouTube</option><option value="Google Skills">Google Skills</option><option value="Paid Course">Paid Course</option><option value="Custom PDF">Custom PDF</option>
+            </select>
+            <input type="url" id="vault-url" maxlength="2048" placeholder="https://..." aria-label="Resource URL" class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-2 text-sm text-slate-200">
+            <button type="button" data-action="add-vault" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-lg px-4 py-2 text-sm transition-colors">Add to Vault</button>
+          </div>
+        </div>
+        <div id="vault-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Chat modal -->
+  <div id="chat-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="chat-title">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl h-[640px] flex flex-col shadow-2xl overflow-hidden">
+      <div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div class="h-2.5 w-2.5 rounded-full bg-emerald-400"></div>
+          <span id="chat-title" class="font-bold text-white text-sm">LearningCape AI Guide</span>
+          <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">AI-generated</span>
+        </div>
+        <button type="button" data-action="close-modals" aria-label="Close" class="text-slate-400 hover:text-white text-lg font-bold">&times;</button>
+      </div>
+      <div id="chat-consent" class="p-6 text-sm text-slate-300 space-y-4">
+        <p>You are about to chat with an <strong class="text-white">AI system, not a human</strong>. Your questions are sent to our server and then to a third-party AI provider to generate answers.</p>
+        <p class="text-slate-400">Do not enter personal, confidential or sensitive information. Answers can be wrong; verify before relying on them. Questions are not stored by LearningCape; only a usage counter is kept for rate limiting. See Privacy &amp; Data.</p>
+        <button type="button" data-action="accept-chat" class="px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm">I understand — enable assistant</button>
+      </div>
+      <div id="chat-body" class="hidden flex-1 flex flex-col min-h-0">
+        <div id="chat-messages" class="flex-1 p-6 overflow-y-auto space-y-4 text-sm text-slate-300" aria-live="polite"></div>
+        <div class="p-4 border-t border-slate-800 flex space-x-3">
+          <input type="text" id="chat-input" maxlength="1000" placeholder="Ask about courses or vault organization..." aria-label="Your question" autocomplete="off" class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-cyan-500">
+          <button type="button" id="chat-send" data-action="send-chat" class="px-5 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl text-sm transition-colors disabled:opacity-50">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy modal -->
+  <div id="privacy-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl max-h-[85vh] overflow-y-auto shadow-2xl p-6 space-y-4 text-sm text-slate-300">
+      <div class="flex items-center justify-between">
+        <h2 id="privacy-title" class="text-lg font-bold text-white">Privacy &amp; Data</h2>
+        <button type="button" data-action="close-modals" aria-label="Close" class="text-slate-400 hover:text-white text-lg font-bold">&times;</button>
+      </div>
+      <p><strong class="text-white">Controller:</strong> [CONTROLLER NAME AND CONTACT — complete before launch].</p>
+      <p><strong class="text-white">What is stored:</strong> your chosen level, module completion, and vault entries you add, on this device and (if cloud sync is enabled) in our database under an anonymous account identifier. No name, email or tracking cookies are used. Legal basis: providing the service you request (GDPR Art. 6(1)(b)).</p>
+      <p><strong class="text-white">AI assistant:</strong> only if you enable it, your question is processed by [AI PROVIDER] to produce a reply. We do not store question text. A timestamped usage counter is kept for abuse prevention (legitimate interest, Art. 6(1)(f)).</p>
+      <p><strong class="text-white">Your rights:</strong> you can export or erase your data below. You may also contact the controller to exercise other GDPR rights or to complain to your supervisory authority.</p>
+      <div class="flex flex-wrap gap-3 pt-2">
+        <button type="button" data-action="export-data" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-700 font-semibold">Export my data</button>
+        <button type="button" data-action="delete-data" class="px-4 py-2 rounded-lg bg-rose-950 hover:bg-rose-900 text-rose-200 border border-rose-800 font-semibold">Delete all my data</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-100 shadow-xl"></div>
+
+  <script src="vendor/supabase.js" integrity="sha384-uteMfOloLDGt042uDz+xHGF3ym63/WQ6rFq7murQRG8Ih7QrXGEGNtWd8688sb4O" crossorigin="anonymous"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

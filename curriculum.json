@@ -1,0 +1,47 @@
+{
+  "everyday": {
+    "title": "Tier 1: Everyday Home User",
+    "subtitle": "Simple, jargon-free guides for personal task management, safety, and everyday chat tools.",
+    "modules": [
+      { "id": "ev-1", "title": "AI Literacy & Consumer Privacy", "desc": "Understanding data privacy and avoiding sharing private personal information.", "link": "https://support.google.com/gemini" },
+      { "id": "ev-2", "title": "Everyday Prompt Patterns", "desc": "How to talk to AI naturally—asking clear questions for better everyday answers.", "link": "https://cloud.google.com/discover/what-is-prompt-engineering" },
+      { "id": "ev-3", "title": "Personal Task Automation", "desc": "Using AI assistants for trip planning, meal scheduling, and organizing notes.", "link": "https://ai.google.dev/" }
+    ]
+  },
+  "student": {
+    "title": "Tier 2: Student & Academic Researcher",
+    "subtitle": "Specialized tools for source-grounded research, studying, and citation safety.",
+    "modules": [
+      { "id": "st-1", "title": "Source-Grounded Study with NotebookLM", "desc": "Uploading lecture notes and PDFs to create an AI assistant answering strictly from your files.", "link": "https://notebooklm.google.com/" },
+      { "id": "st-2", "title": "Academic Citation & Integrity", "desc": "Cross-verifying AI summaries against original research papers to prevent hallucinated facts.", "link": "https://www.deeplearning.ai/" },
+      { "id": "st-3", "title": "Student Writing & Synthesis Assistants", "desc": "Structuring essay outlines and organizing complex study material.", "link": "https://ai.google.dev/" }
+    ]
+  },
+  "office": {
+    "title": "Tier 3: General Office Professional",
+    "subtitle": "Practical workplace productivity: email triage, document summarizing, and workflow multipliers.",
+    "modules": [
+      { "id": "of-1", "title": "Email Triage & Draft Summarization", "desc": "Managing busy inboxes, summarizing lengthy threads, and drafting secure replies.", "link": "https://workspace.google.com/" },
+      { "id": "of-2", "title": "Spreadsheet & Data Organization", "desc": "Using natural language to clean up messy data tables and categorize feedback.", "link": "https://workspace.google.com/" },
+      { "id": "of-3", "title": "Meeting Synthesis & Action Items", "desc": "Turning rough transcripts into structured summaries and clear task lists.", "link": "https://workspace.google.com/" }
+    ]
+  },
+  "engineer": {
+    "title": "Tier 4: AI Software Engineer",
+    "subtitle": "Building custom applications, multi-model API integrations, and vector database pipelines.",
+    "modules": [
+      { "id": "eng-1", "title": "Multi-Model API SDK Integration", "desc": "Writing code against Google Gemini, Anthropic Claude, and OpenAI SDKs.", "link": "https://github.com/google/gemini-api-cookbook" },
+      { "id": "eng-2", "title": "Vector RAG & Database Pipelines", "desc": "Chunking strategies, embeddings, and vector storage setup using Supabase pgvector.", "link": "https://supabase.com/docs/guides/ai" },
+      { "id": "eng-3", "title": "Agentic Loops & Protocol Standards", "desc": "Building stateful reasoning loops, tool calling, and Model Context Protocol (MCP) servers.", "link": "https://modelcontextprotocol.io/" }
+    ]
+  },
+  "executive": {
+    "title": "Tier 5: AI CTO, CISO & Consultant",
+    "subtitle": "Enterprise architecture, zero-trust control planes, and regulatory compliance standards.",
+    "modules": [
+      { "id": "exec-1", "title": "Enterprise Inference Economics", "desc": "Balancing cloud APIs versus local server clusters for latency and cost efficiency.", "link": "https://huggingface.co/docs" },
+      { "id": "exec-2", "title": "Regulatory Frameworks (ISO 42001 & EU AI Act)", "desc": "Operationalizing risk tiering, continuous auditing, and enterprise governance controls.", "link": "https://www.iso.org/standard/81230.html" },
+      { "id": "exec-3", "title": "Zero-Trust Security & Posture Management", "desc": "Kernel-level sandboxing, prompt injection defense, and data loss prevention gateways.", "link": "https://owasp.org/www-project-top-10-for-large-language-model-applications/" }
+    ]
+  }
+}

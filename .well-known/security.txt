@@ -1,0 +1,4 @@
+Contact: mailto:[SECURITY-CONTACT-EMAIL]
+Expires: 2027-11-18T00:00:00.000Z
+Preferred-Languages: en, cs
+Canonical: https://[YOUR-DOMAIN]/.well-known/security.txt
