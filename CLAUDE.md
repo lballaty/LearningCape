@@ -5,6 +5,9 @@ Being rebuilt as a Flutter app (`app/`, not yet created) + Supabase. The static 
 ## Architecture decision (2026-11-18)
 The app runs **locally on the user's computer**; only the data is hosted (Supabase). It ships as **one Flutter app, no separate server** (macOS, iPad, iPhone first). The assistant will use Sign in with ChatGPT, with the loopback callback on `127.0.0.1` handled inside the app (plan F6). Apple builds and device tests need the owner's Mac; a cloud session can only do code, tests and Linux builds. Do not add hosting config or a server-side LLM key.
 
+## Prototype
+`prototypes/siwc_prototype/`: Flutter port of the ChatGPT sign-in (reference: `SearchingFool/Safari-ai-agent`, Swift). Read its README for what is and is not verified. Flutter is not preinstalled in cloud sessions; the stable SDK tarball from storage.googleapis.com installs fine.
+
 ## Supabase project
 - Dashboard: https://supabase.com/dashboard/project/xsepfjyoiqzkhdnpjckh
 - Project ref: `xsepfjyoiqzkhdnpjckh`; API URL: `https://xsepfjyoiqzkhdnpjckh.supabase.co`

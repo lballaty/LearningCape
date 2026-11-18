@@ -51,7 +51,7 @@ Done when: two devices signed in to one account show the same progress and vault
 3. Exportable progress record (self-attested; labelled as not a certificate).
 
 ### F6. Assistant on the user's ChatGPT plan (Agent; Owner tests with own login)
-1. **Feasibility check first, on a real iPad and iPhone:** confirm the `127.0.0.1` callback arrives while the app is in the background. If it does not, the assistant ships on macOS only until OpenAI offers another route.
+1. **Feasibility check first, on a real iPad and iPhone:** prototype in `prototypes/siwc_prototype/` (logic passes tests against a mock server; real-device run by the owner is outstanding). Confirm the `127.0.0.1` callback arrives while the app is in the background. If it does not, the assistant ships on macOS only until OpenAI offers another route.
 2. Sign in with ChatGPT: dynamic client registration, PKCE, loopback callback, tokens in secure storage, Responses API with `store: false`.
 3. Provider interface so other providers can be added.
 4. Answers grounded in the local curriculum index (shared with search), with the link allowlist kept.
