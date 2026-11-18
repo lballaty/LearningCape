@@ -8,7 +8,7 @@ jobs:
   secrets-and-deps:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4   # TODO: pin actions to full commit SHAs
+      - uses: actions/checkout@v7   # TODO: pin actions to full commit SHAs
         with: { fetch-depth: 0 }
       - name: Secret scan (gitleaks)
         uses: gitleaks/gitleaks-action@v2
