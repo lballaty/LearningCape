@@ -7,6 +7,6 @@
     "sync:curriculum": "cp curriculum.json supabase/functions/assistant_router/curriculum.json"
   },
   "devDependencies": {
-    "tailwindcss": "3.4.17"
+    "tailwindcss": "4.3.5"
   }
 }
