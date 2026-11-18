@@ -44,6 +44,7 @@ Done when: the owner has approved the list for all five tracks.
 1. Progress overview: per-module bars, completion dates, time invested (sum of `minutes`).
 2. Vault notes (the `user_sources.notes` column already exists).
 3. Printable and exportable progress record (self-attested; clearly labelled as not a certificate).
+4. Search (owner requirement): one box over all tracks' modules and resources and the user's vault; in-browser index built from `curriculum.json` and the vault; filters for track, format and completed state; results link to the module or vault item. No server call. The same index can later feed the assistant's retrieval.
 
 ### M5. Accounts (Agent, Owner for dashboard settings). Scheduled directly after M1.
 1. Email and password sign-up, sign-in, sign-out and password reset. No MFA during the testing period (owner decision).

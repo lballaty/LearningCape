@@ -15,6 +15,7 @@ A standalone web app that guides a person through curated AI learning for their 
 | Content | Third-party, free sources only at first. Formats vary (course, video, article, repo, docs). LearningCape provides and curates the links and short descriptions. Own coursework and labs may come later. |
 | First success measure | A first user can test the app and use every feature end to end. |
 | Languages | English first, Czech second. |
+| Search | The curriculum and the app's own content must be searchable. |
 | Sign-in | Email and password only at first. No MFA during the testing period, because it gets in the way of feature testing. |
 
 ## 3. Assumptions (not yet confirmed)
@@ -22,6 +23,7 @@ A standalone web app that guides a person through curated AI learning for their 
 2. **Accounts:** email and password sign-in replaces anonymous sessions as the way into the cloud features; the app still works on one device without signing in. Email confirmation is switched off during testing. Both points need owner confirmation.
 3. **Curriculum storage:** stays a reviewed JSON file in the repo until own coursework exists.
 4. **Vendor neutrality:** content should cover several AI vendors, not mostly one.
+6. **Search scope:** one search box covering every track's modules and resources (title, description, provider, format) plus the user's vault (title, notes). It runs in the browser with no server call, so it works offline and sends nothing to a third party.
 5. **Hosting:** undecided (see `docs/PLAN.md`, open decisions).
 
 ## 4. Out of scope for the first release
