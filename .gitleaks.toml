@@ -1,0 +1,7 @@
+# The Supabase anon key in config.js is public by design (role=anon; security comes from RLS + required auth).
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Public Supabase anon key"
+paths = ['''^config\.js$''']

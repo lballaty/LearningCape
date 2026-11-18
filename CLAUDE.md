@@ -6,12 +6,12 @@ Static frontend (`index.html`, `app.js`, built `styles.css`) + Supabase (Postgre
 - Dashboard: https://supabase.com/dashboard/project/xsepfjyoiqzkhdnpjckh
 - Project ref: `xsepfjyoiqzkhdnpjckh`; API URL: `https://xsepfjyoiqzkhdnpjckh.supabase.co`
 - Agents have **no dashboard/API access** unless the user provisions a token. Do not ask for secrets in chat. Never commit the `service_role` key, `LLM_API_KEY`, or any `.env`.
-- The anon key is public by design but is **not yet in `config.js`** (placeholders remain). Ask the user for it (Dashboard > Settings > API).
+- The public anon key (role=anon, ref matches) and URL are set in `config.js`; CSP `connect-src` is pinned to the project host in `index.html` and `deploy/nginx.conf.example`. `.gitleaks.toml` allowlists `config.js` for that key. The nginx example still has `learn.example.com` as the domain.
 
 ## Status (as of 2026-11-18)
 - Repo verified: SRI hash matches, curriculum copies identical, `styles.css` up to date, no unsafe DOM sinks, local-mode browser smoke test passed.
 - NOT yet verified: any Supabase path (sign-in, sync, chat, erase). Migration `0001_init.sql` and both Edge Functions are not known to be deployed.
-- Open launch items: see `docs/SECURITY.md` section 7 (Gap Review). Placeholders remain in `config.js`, `index.html` privacy modal, `.well-known/security.txt`, `deploy/nginx.conf.example`; CAPTCHA not wired into `signInAnonymously`.
+- Open launch items: see `docs/SECURITY.md` section 7 (Gap Review). Placeholders remain in `index.html` privacy modal, `.well-known/security.txt`, `deploy/nginx.conf.example`; CAPTCHA not wired into `signInAnonymously`.
 
 ## Known issues (not yet fixed)
 1. `reset-track` clears only the local track; reload restores the old cloud track.
