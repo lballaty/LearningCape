@@ -15,10 +15,11 @@ A standalone web app that guides a person through curated AI learning for their 
 | Content | Third-party, free sources only at first. Formats vary (course, video, article, repo, docs). LearningCape provides and curates the links and short descriptions. Own coursework and labs may come later. |
 | First success measure | A first user can test the app and use every feature end to end. |
 | Languages | English first, Czech second. |
+| Sign-in | Email and password only at first. No MFA during the testing period, because it gets in the way of feature testing. |
 
 ## 3. Assumptions (not yet confirmed)
 1. **AI assistant:** kept as built for now (recommends only curated links), and hidden when no LLM key is configured. Rebuild or removal is undecided.
-2. **Accounts:** anonymous sessions stay the default; an optional email sign-in for cross-device use is added before wider release.
+2. **Accounts:** email and password sign-in replaces anonymous sessions as the way into the cloud features; the app still works on one device without signing in. Email confirmation is switched off during testing. Both points need owner confirmation.
 3. **Curriculum storage:** stays a reviewed JSON file in the repo until own coursework exists.
 4. **Vendor neutrality:** content should cover several AI vendors, not mostly one.
 5. **Hosting:** undecided (see `docs/PLAN.md`, open decisions).

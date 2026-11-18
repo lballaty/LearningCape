@@ -45,9 +45,12 @@ Done when: the owner has approved the list for all five tracks.
 2. Vault notes (the `user_sources.notes` column already exists).
 3. Printable and exportable progress record (self-attested; clearly labelled as not a certificate).
 
-### M5. Accounts (Agent, Owner for dashboard settings)
-1. Optional email magic-link sign-in that upgrades the anonymous account and keeps its data.
-2. CAPTCHA wired into anonymous sign-in.
+### M5. Accounts (Agent, Owner for dashboard settings). Scheduled directly after M1.
+1. Email and password sign-up, sign-in, sign-out and password reset. No MFA during the testing period (owner decision).
+2. Owner: enable the Email provider; decide on email confirmation (assumed off during testing); leave MFA off.
+3. Replace anonymous sign-in. Local data on the device is pushed to the account on first sign-in.
+4. Update the privacy notice and `docs/SECURITY.md`: an email address is now stored, which the current text says is not the case. Record "no MFA" and "confirmation off" as accepted testing-period risks to revisit before wider release.
+5. CAPTCHA on sign-up before wider release.
 
 ### M6. Translation-ready (Agent)
 1. Move UI strings to `locales/en.json`; allow per-locale titles and descriptions in the curriculum.
@@ -64,20 +67,20 @@ Done when: the first user completes the full flow on the hosted URL (the brief's
 Quizzes and testing; own coursework and labs; organisations, roles and reporting; assistant rebuild.
 
 ## Order and dependencies
-M1 can start now. M0 blocks only the cloud half of M1's tests. M2 precedes M3 and M4. M5 and M6 are independent of each other. M7 needs M0 to M3 at minimum.
+M1 can start now. M0 blocks only the cloud half of M1's tests. M5 follows M1 and needs M0. M2 precedes M3 and M4. M6 is independent. M7 needs M0 to M3 at minimum.
 
 ## Open decisions (Owner)
 | # | Decision | Default if unanswered |
 |---|---|---|
 | 1 | AI assistant: keep as is, rebuild, or remove | Keep, hidden without a key |
 | 2 | Hosting for the first tester | None; blocks M7 |
-| 3 | Email sign-in before or after the first tester | After |
+| 3 | Does password sign-in replace anonymous sessions, and is email confirmation off during testing | Replace; off |
 | 4 | Controller name and contact for the privacy notice | None; blocks M7 |
 
 ## Risks
 | Risk | Mitigation |
 |---|---|
 | Third-party links change or disappear | `last_verified` field, scheduled link check, quarterly review |
-| Anonymous-only accounts lose data when the browser is cleared | M5 email upgrade; export already exists |
+| Password-only accounts without MFA or email confirmation are weaker | Accepted for the testing period only; revisit before wider release |
 | Vanilla JS outgrows one file | Split `app.js` into ES modules during M2; no framework unless M4 proves it necessary |
 | Content quality depends on curation effort | Owner approval gate in M3 |
