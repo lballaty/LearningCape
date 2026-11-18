@@ -1,5 +1,7 @@
 # LearningCape
 
+> **Being rebuilt as a Flutter app.** Current state and next steps: `docs/STATUS-TRACKER.md`. Plan: `docs/PLAN.md`. The static web app described below is kept as a reference only.
+
 Multi-tier AI competency and governance tracker. Static frontend + Supabase (Postgres, Auth, Edge Functions).
 Security and compliance controls: see `docs/SECURITY.md` (read before deploying).
 

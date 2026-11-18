@@ -15,10 +15,10 @@ Path: `docs/PLAN.md` · Status: **Draft** · Date: 2026-11-18 (rewritten for the
 
 ### F0. Cloud bring-up (Owner, then Agent verifies)
 1. Owner: run `supabase/migrations/0001_init.sql` in the SQL Editor.
-2. Owner: enable the Email provider with password sign-in; email confirmation off for the testing period; MFA off.
-3. Agent: probe the API and confirm tables and sign-up work.
+2. Owner: enable anonymous sign-ins (testing starts with these). The Email provider with password sign-in is enabled when F3 starts; MFA off.
+3. Agent: probe the API, then create two anonymous sessions and confirm each can write its own rows and is refused the other's.
 
-Done when: a test account can sign up, sign in and write its own rows, and cannot read another account's rows.
+Done when: that isolation check passes.
 
 ### F1. Flutter foundation (Agent)
 1. Create the Flutter project in `app/` (macOS and iOS targets), with theme, navigation and a state-management layer.
