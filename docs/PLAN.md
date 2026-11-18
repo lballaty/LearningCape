@@ -58,14 +58,14 @@ Done when: the owner has approved the list for all five tracks.
 2. Czech (`locales/cs.json`) follows after the first release.
 
 ### M7. First-user release (Owner decisions, Agent executes)
-1. Package the local app (open decision 2) with a one-step start; set `ALLOWED_ORIGIN` and the CSP to the local origin; retire `deploy/nginx.conf.example`.
+1. Build installers for the wrapped desktop app (open decision 2); set `ALLOWED_ORIGIN` and the CSP to the local origin; retire `deploy/nginx.conf.example`.
 2. Fill the privacy notice and `.well-known/security.txt` placeholders.
 3. Close the Gap Review in `docs/SECURITY.md` section 7.
 
 Done when: the first user installs and starts the app on their own computer and completes the full flow (the brief's success measure).
 
 ### M8. Assistant on the user's ChatGPT plan (Agent; Owner tests with own login). Can follow M1.
-1. Local helper process (Node) serves the app on `127.0.0.1` and handles Sign in with ChatGPT: dynamic client registration, PKCE, loopback callback, token storage on the device, Responses API calls with `store: false`.
+1. Inside the wrapped desktop app (no separate server), the app's own background code handles Sign in with ChatGPT: dynamic client registration, PKCE, loopback callback, token storage in the operating system's credential store, Responses API calls with `store: false`.
 2. Assistant sits behind a provider interface so other providers can be added.
 3. Retrieval over the local curriculum index (shared with search, M4) so answers cite curated resources; keep the link allowlist.
 4. Retire the `assistant_router` Edge Function, the `LLM_API_KEY` secret and the `assistant_usage` table once the local path works (the user's own plan and its cap replace our rate limit).
@@ -81,7 +81,7 @@ M1 can start now. M0 blocks only the cloud half of M1's tests. M5 follows M1 and
 | # | Decision | Default if unanswered |
 |---|---|---|
 | 1 | Resolved 2026-11-18: assistant uses Sign in with ChatGPT through a local helper (M8); no approval needed while the app is local | n/a |
-| 2 | Packaging of the local app: `npm start` with Node installed, or a desktop installer | `npm start` for testing; installer later |
+| 2 | Desktop wrapper framework: Electron or Tauri (owner decided 2026-11-18 that it is one wrapped app, no separate server) | Electron |
 | 3 | Does password sign-in replace anonymous sessions, and is email confirmation off during testing | Replace; off |
 | 4 | Controller name and contact for the privacy notice | None; blocks M7 |
 
